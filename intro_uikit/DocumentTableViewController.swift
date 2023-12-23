@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import QuickLook
 
 struct DocumentFile {
     var title: String
@@ -34,8 +35,10 @@ extension Int {
     }
 }
 
-class DocumentTableViewController: UITableViewController {
+class DocumentTableViewController: UITableViewController, QLPreviewControllerDataSource {
     var allDocumentFiles = [DocumentFile]()
+    
+    var selectedDocumentIndex: Int?
     
     func listFiles() {
         let fm = FileManager.default
@@ -103,17 +106,48 @@ class DocumentTableViewController: UITableViewController {
      return cell
      }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDocumentSegue" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let selectedDocument = allDocumentFiles[indexPath.row]
-                if let destinationVC = segue.destination as? DocumentViewController {
-                    destinationVC.imageName = selectedDocument.imageName
-                }
-            }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            selectedDocumentIndex = indexPath.row
+            showPreviewController()
         }
-    }
     
+    func showPreviewController() {
+            guard let selectedDocumentIndex = selectedDocumentIndex else { return }
+
+            let previewController = QLPreviewController()
+            previewController.dataSource = self
+
+            // Présenter le QLPreviewController dans la navigation controller
+            navigationController?.pushViewController(previewController, animated: true)
+        }
+    
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+            return 1 // Nous n'affichons qu'un seul document à la fois
+        }
+    
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+            guard let selectedDocumentIndex = selectedDocumentIndex else {
+                fatalError("Selected document index is nil.")
+            }
+
+            let selectedDocument = allDocumentFiles[selectedDocumentIndex]
+
+            // Retournez une URL pour le document sélectionné
+            return selectedDocument.url as QLPreviewItem
+        }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "ShowDocumentSegue" {
+//            if let indexPath = tableView.indexPathForSelectedRow {
+//                let selectedDocument = allDocumentFiles[indexPath.row]
+//                if let destinationVC = segue.destination as? DocumentViewController {
+//                    destinationVC.imageName = selectedDocument.imageName
+//                }
+//            }
+//        }
+//    }
+    
+
     
     /*
      // Override to support conditional editing of the table view.

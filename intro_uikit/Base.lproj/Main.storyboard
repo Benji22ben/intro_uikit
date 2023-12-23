@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ohG-YS-VrJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ohG-YS-VrJ">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,6 +40,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="CSj-CD-3c4" kind="show" identifier="ShowDocumentSegue" id="Bzj-Yw-x1m"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -70,8 +74,39 @@
             </objects>
             <point key="canvasLocation" x="-376.3358778625954" y="-711.26760563380287"/>
         </scene>
+        <!--Document View Controller-->
+        <scene sceneID="jza-BD-Phg">
+            <objects>
+                <viewController id="CSj-CD-3c4" customClass="DocumentViewController" customModule="intro_uikit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sh5-rx-R1p">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="claudio-schwarz-tPg2jQrh8Gs-unsplash.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="6K2-He-2YB">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VrN-LR-glr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6K2-He-2YB" firstAttribute="top" secondItem="VrN-LR-glr" secondAttribute="top" id="CA8-dp-bpH"/>
+                            <constraint firstItem="6K2-He-2YB" firstAttribute="leading" secondItem="VrN-LR-glr" secondAttribute="leading" id="Oav-wA-k25"/>
+                            <constraint firstItem="6K2-He-2YB" firstAttribute="centerX" secondItem="Sh5-rx-R1p" secondAttribute="centerX" id="ZKO-QI-KNJ"/>
+                            <constraint firstItem="6K2-He-2YB" firstAttribute="bottom" secondItem="VrN-LR-glr" secondAttribute="bottom" id="ff6-hn-wGN"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6mu-0X-Ee9"/>
+                    <connections>
+                        <outlet property="imageView" destination="6K2-He-2YB" id="M3b-km-tLQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vmq-Dz-4vc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1063.3587786259541" y="-1514.0845070422536"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="claudio-schwarz-tPg2jQrh8Gs-unsplash.jpg" width="5152" height="7728"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

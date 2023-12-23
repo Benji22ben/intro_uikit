@@ -21,6 +21,7 @@
 		7A5DF8D22B20C45C00BB63F1 /* maeva-vigier-8L85v53b8C0-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A5DF8CE2B20C45B00BB63F1 /* maeva-vigier-8L85v53b8C0-unsplash.jpg */; };
 		7A5DF8D32B20C45C00BB63F1 /* claudio-schwarz-tPg2jQrh8Gs-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A5DF8CF2B20C45C00BB63F1 /* claudio-schwarz-tPg2jQrh8Gs-unsplash.jpg */; };
 		7A5DF8D42B20C45C00BB63F1 /* grab-3z9oSasKbeA-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A5DF8D02B20C45C00BB63F1 /* grab-3z9oSasKbeA-unsplash.jpg */; };
+		AB05DB7D2B37313300350F98 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05DB7C2B37313300350F98 /* DocumentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		7A5DF8CE2B20C45B00BB63F1 /* maeva-vigier-8L85v53b8C0-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "maeva-vigier-8L85v53b8C0-unsplash.jpg"; sourceTree = "<group>"; };
 		7A5DF8CF2B20C45C00BB63F1 /* claudio-schwarz-tPg2jQrh8Gs-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "claudio-schwarz-tPg2jQrh8Gs-unsplash.jpg"; sourceTree = "<group>"; };
 		7A5DF8D02B20C45C00BB63F1 /* grab-3z9oSasKbeA-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grab-3z9oSasKbeA-unsplash.jpg"; sourceTree = "<group>"; };
+		AB05DB7C2B37313300350F98 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				7A5DF89B2B209EE300BB63F1 /* LaunchScreen.storyboard */,
 				7A5DF89E2B209EE300BB63F1 /* Info.plist */,
 				7A5DF8C32B20ABAF00BB63F1 /* DocumentTableViewController.swift */,
+				AB05DB7C2B37313300350F98 /* DocumentViewController.swift */,
 			);
 			path = intro_uikit;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB05DB7D2B37313300350F98 /* DocumentViewController.swift in Sources */,
 				7A5DF8952B209EE000BB63F1 /* ViewController.swift in Sources */,
 				7A5DF8912B209EE000BB63F1 /* AppDelegate.swift in Sources */,
 				7A5DF8C42B20ABAF00BB63F1 /* DocumentTableViewController.swift in Sources */,

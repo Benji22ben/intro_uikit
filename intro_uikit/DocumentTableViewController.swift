@@ -38,21 +38,21 @@ class DocumentTableViewController: UITableViewController {
     var allDocumentFiles = [DocumentFile]()
     
     func listFiles() {
-        var fm = FileManager.default
+        let fm = FileManager.default
         do {
             if let bundleRessourcePath = Bundle.main.resourcePath
             {
-                var results = try fm.contentsOfDirectory(atPath: bundleRessourcePath)
+                let results = try fm.contentsOfDirectory(atPath: bundleRessourcePath)
                 for item in results {
                     if item.hasSuffix("jpg") {
                         
                     
-                    var url: URL = URL(fileURLWithPath: bundleRessourcePath + "/" + item)
-                    var file = try url.resourceValues(forKeys: [.typeIdentifierKey, .nameKey, .fileSizeKey])
+                    let url: URL = URL(fileURLWithPath: bundleRessourcePath + "/" + item)
+                    let file = try url.resourceValues(forKeys: [.typeIdentifierKey, .nameKey, .fileSizeKey])
                     
                     guard let fileSize = file.fileSize, let name = file.name, let type = file.typeIdentifier else { return }
                     
-                    var documentFile: DocumentFile = DocumentFile(title: name, size: fileSize, url: url, type: type)
+                    let documentFile: DocumentFile = DocumentFile(title: name, size: fileSize, url: url, type: type)
                     
                     allDocumentFiles.append(documentFile)
                     }
@@ -95,13 +95,24 @@ class DocumentTableViewController: UITableViewController {
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "DocumentCell", for: indexPath)
      
-         var actualDocumentFile = allDocumentFiles[indexPath.row]
+         let actualDocumentFile = allDocumentFiles[indexPath.row]
          
          cell.textLabel?.text = actualDocumentFile.title
-         cell.detailTextLabel?.text = String(actualDocumentFile.size.formattedSize())
+         cell.detailTextLabel?.text = actualDocumentFile.size.formattedSize()
      
      return cell
      }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDocumentSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let selectedDocument = allDocumentFiles[indexPath.row]
+                if let destinationVC = segue.destination as? DocumentViewController {
+                    destinationVC.imageName = selectedDocument.imageName
+                }
+            }
+        }
+    }
     
     
     /*
